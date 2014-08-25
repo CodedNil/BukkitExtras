@@ -24,7 +24,8 @@ public class Elevators implements Listener {
 		Player player = event.getPlayer();
 		if (!event.isSneaking())
 			return;
-		if (!event.getPlayer().hasPermission("bukkitextras.elevators"))
+		if (!event.getPlayer().hasPermission(
+				"bukkitextras.modules.misc.elevators"))
 			return;
 		Block block = player.getLocation().getBlock()
 				.getRelative(BlockFace.DOWN);

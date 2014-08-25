@@ -14,9 +14,13 @@ import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 import org.bukkit.event.player.PlayerShearEntityEvent;
 import org.bukkit.inventory.ItemStack;
 
+import codednil.BukkitExtras.Main.BukkitExtras;
+
 public class AnimalTweaks implements Listener {
 	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
 	public void CreatureSpawn(CreatureSpawnEvent event) {
+		if (!BukkitExtras.Plugin.getConfig().getBoolean("MorePigs"))
+			return;
 		LivingEntity creature = event.getEntity();
 		if (event.getSpawnReason() == SpawnReason.BREEDING)
 			if (creature.getType() == EntityType.PIG)

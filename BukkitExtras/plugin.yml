@@ -21,6 +21,7 @@ permissions:
          bukkitextras.modules.betterhoe.*: true
          bukkitextras.modules.shops.*: true
          bukkitextras.modules.wands.*: true
+         bukkitextras.modules.misc.*: true
 
    bukkitextras.modules.animaltweaks:
       description: BukkitExtras Module "animaltweaks"
@@ -63,6 +64,18 @@ permissions:
          bukkitextras.modules.wands.trading: true
    bukkitextras.modules.wands.trading:
       description: BukkitExtras Module "wands" Submodule "trading"
+      default: true
+
+   bukkitextras.modules.misc.*:
+      description: BukkitExtras Module "misc"
+      children:
+         bukkitextras.modules.misc.elevators: true
+         bukkitextras.modules.misc.silkspawners: true
+   bukkitextras.modules.misc.elevators:
+      description: BukkitExtras Module "misc" Submodule "elevators"
+      default: true
+   bukkitextras.modules.misc.silkspawners:
+      description: BukkitExtras Module "misc" Submodule "silkspawners"
       default: true
 
    bukkitextras.commands.*:

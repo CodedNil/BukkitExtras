@@ -1,2 +1,7 @@
-AutoUpdate: true
+MorePigs: true
+
 ElevatorBlock: Lapis block
+
+BukkitProtectCompat: true
+
+UpdateManager: true

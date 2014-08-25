@@ -59,10 +59,11 @@ public class BukkitExtras extends JavaPlugin implements Listener {
 			elevatorBlock = Material.valueOf(elevatorConfig);
 		}
 
-		// new UpdateHandler(this, 69062, this.getFile(),
-		// UpdateHandler.UpdateType.DEFAULT, false);
+		new UpdateHandler(this, 69062, this.getFile(),
+				UpdateHandler.UpdateType.DEFAULT, false);
 
-		if (serverHasPlugin("BukkitProtect"))
+		if (serverHasPlugin("BukkitProtect")
+				&& getConfig().getBoolean("BukkitProtectCompat"))
 			Compat.initialize();
 	}
 

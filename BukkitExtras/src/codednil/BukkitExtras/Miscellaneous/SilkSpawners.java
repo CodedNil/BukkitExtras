@@ -22,6 +22,9 @@ public class SilkSpawners implements Listener {
 	public void BlockBreak(BlockBreakEvent event) {
 		if (event.isCancelled())
 			return;
+		if (!event.getPlayer().hasPermission(
+				"bukkitextras.modules.misc.silkspawners"))
+			return;
 		if (event.getBlock().getType() != Material.MOB_SPAWNER)
 			return;
 		if (!Util.isA(event.getPlayer().getItemInHand().getType(), "Pickaxe"))
@@ -46,6 +49,9 @@ public class SilkSpawners implements Listener {
 		Block block = event.getBlock();
 		Material blocktype = block.getType();
 		ItemStack item = event.getItemInHand();
+		if (!event.getPlayer().hasPermission(
+				"bukkitextras.modules.misc.silkspawners"))
+			return;
 		if (!item.hasItemMeta())
 			return;
 		if (!item.getItemMeta().hasLore())

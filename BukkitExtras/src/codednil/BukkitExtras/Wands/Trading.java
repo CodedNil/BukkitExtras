@@ -37,7 +37,7 @@ public class Trading implements Listener {
 		if (event.isCancelled())
 			return;
 		if (WandHandler.isWandOf(item, "Trading")) {
-			if (!player.hasPermission("bukkitextras.wands"))
+			if (!player.hasPermission("bukkitextras.modules.wands.trading"))
 				return;
 			if (Compat.playerCanBuild(player, block.getLocation()))
 				if (player.isSneaking()) {

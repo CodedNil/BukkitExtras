@@ -184,7 +184,7 @@ public class UpdateHandler {
 		this.updateFolder = plugin.getServer().getUpdateFolder();
 		FileConfiguration config = plugin.getConfig();
 
-		if (!config.getBoolean("AutoUpdate")) {
+		if (!config.getBoolean("UpdateManager")) {
 			plugin.getLogger().info(
 					plugin.getName()
 							+ " will not auto update - please check config");
