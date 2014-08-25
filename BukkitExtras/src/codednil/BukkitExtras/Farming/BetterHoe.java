@@ -5,6 +5,9 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
@@ -14,10 +17,13 @@ import codednil.BukkitExtras.Main.Compat;
 import codednil.BukkitExtras.Main.Util;
 
 @SuppressWarnings("deprecation")
-public class BetterHoe {
-	public static void breakCrop(Block block, Player player,
-			Material blocktype, ItemStack item, BlockBreakEvent event) {
-		if (!player.hasPermission("bukkitextras.betterhoes"))
+public class BetterHoe implements Listener {
+	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+	public void BlockBreak(BlockBreakEvent event) {
+		Block block = event.getBlock();
+		Player player = event.getPlayer();
+		ItemStack item = player.getItemInHand();
+		if (!player.hasPermission("bukkitextras.modules.betterhoe.harvest"))
 			return;
 		if (!Util.isA(item.getType(), "Hoe"))
 			return;
@@ -66,7 +72,10 @@ public class BetterHoe {
 		}
 	}
 
+	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
 	public static void growCrop(Block block, Player player) {
+		if (!player.hasPermission("bukkitextras.modules.betterhoe.grow"))
+			return;
 		for (int i = 0; i < 9; i++) {
 			Location loc = block.getLocation();
 			Util.addLoc(loc, i);
@@ -90,7 +99,10 @@ public class BetterHoe {
 		}
 	}
 
+	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
 	public static void plantCrop(Block block, Player player) {
+		if (!player.hasPermission("bukkitextras.modules.betterhoe.plant"))
+			return;
 		PlayerInventory inventory = player.getInventory();
 		int nextSlot = inventory.getHeldItemSlot() + 1;
 		ItemStack seed = inventory.getItem(nextSlot);

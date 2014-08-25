@@ -1,6 +1,8 @@
 package codednil.BukkitExtras.Main;
 
 import org.bukkit.Material;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
@@ -10,17 +12,28 @@ import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import codednil.BukkitExtras.Commands.CommandHandler;
+import codednil.BukkitExtras.Farming.AnimalTweaks;
+import codednil.BukkitExtras.Farming.BetterHoe;
+import codednil.BukkitExtras.Miscellaneous.Elevators;
+import codednil.BukkitExtras.Wands.Trading;
 import codednil.BukkitExtras.Wands.WandHandler;
 
 public class BukkitExtras extends JavaPlugin implements Listener {
 	public static BukkitExtras Plugin;
-	Material elevatorBlock = Material.LAPIS_BLOCK;
+	public Material elevatorBlock = Material.LAPIS_BLOCK;
 	public ItemStack BONE_MEAL = new ItemStack(Material.INK_SACK, 1, (short) 15);
 
 	@Override
 	public void onEnable() {
 		Plugin = this;
+
 		getServer().getPluginManager().registerEvents(new Events(), this);
+		getServer().getPluginManager().registerEvents(new BetterHoe(), this);
+		getServer().getPluginManager().registerEvents(new AnimalTweaks(), this);
+		getServer().getPluginManager().registerEvents(new Elevators(), this);
+		getServer().getPluginManager().registerEvents(new Trading(), this);
+
 		final ShapelessRecipe nameTag = new ShapelessRecipe(new ItemStack(
 				Material.NAME_TAG, 1));
 		nameTag.addIngredient(Material.STRING);
@@ -65,5 +78,11 @@ public class BukkitExtras extends JavaPlugin implements Listener {
 	public Inventory createInventory(InventoryHolder owner, int size,
 			String title) {
 		return getServer().createInventory(owner, size, title);
+	}
+
+	@Override
+	public boolean onCommand(CommandSender sender, Command cmd, String label,
+			String[] args) {
+		return CommandHandler.commandInput(sender, cmd, args);
 	}
 }
