@@ -25,6 +25,12 @@ import codednil.BukkitExtras.Main.BukkitExtras;
 import codednil.BukkitExtras.Main.Util;
 
 public class ShopHandler {
+	// Todo rewrites
+	// Stockpiles, just a sign with [Stockpile] written on it
+	// Shops take all inventory from owners stockpile
+	// Shops give all inventory to owners stockpile
+	// Shops store data, and open as a custom gui
+
 	static Map<Player, Block> shopsOpen = new HashMap<Player, Block>();
 
 	public static void updateInventory(Inventory inventory, Player player,

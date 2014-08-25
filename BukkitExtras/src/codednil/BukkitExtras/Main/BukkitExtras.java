@@ -16,6 +16,7 @@ import codednil.BukkitExtras.Commands.CommandHandler;
 import codednil.BukkitExtras.Farming.AnimalTweaks;
 import codednil.BukkitExtras.Farming.BetterHoe;
 import codednil.BukkitExtras.Miscellaneous.Elevators;
+import codednil.BukkitExtras.Miscellaneous.SilkSpawners;
 import codednil.BukkitExtras.Wands.Trading;
 import codednil.BukkitExtras.Wands.WandHandler;
 
@@ -28,11 +29,11 @@ public class BukkitExtras extends JavaPlugin implements Listener {
 	public void onEnable() {
 		Plugin = this;
 
-		getServer().getPluginManager().registerEvents(new Events(), this);
 		getServer().getPluginManager().registerEvents(new BetterHoe(), this);
 		getServer().getPluginManager().registerEvents(new AnimalTweaks(), this);
 		getServer().getPluginManager().registerEvents(new Elevators(), this);
 		getServer().getPluginManager().registerEvents(new Trading(), this);
+		getServer().getPluginManager().registerEvents(new SilkSpawners(), this);
 
 		final ShapelessRecipe nameTag = new ShapelessRecipe(new ItemStack(
 				Material.NAME_TAG, 1));

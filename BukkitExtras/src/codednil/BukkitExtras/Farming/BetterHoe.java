@@ -8,7 +8,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
@@ -72,7 +74,6 @@ public class BetterHoe implements Listener {
 		}
 	}
 
-	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
 	public static void growCrop(Block block, Player player) {
 		if (!player.hasPermission("bukkitextras.modules.betterhoe.grow"))
 			return;
@@ -99,7 +100,6 @@ public class BetterHoe implements Listener {
 		}
 	}
 
-	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
 	public static void plantCrop(Block block, Player player) {
 		if (!player.hasPermission("bukkitextras.modules.betterhoe.plant"))
 			return;
@@ -131,5 +131,33 @@ public class BetterHoe implements Listener {
 				}
 			}
 		}
+	}
+
+	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+	public void PlayerInteract(PlayerInteractEvent event) {
+		Block block = event.getClickedBlock();
+		Player player = event.getPlayer();
+		if (block == null)
+			return;
+		Material blocktype = block.getType();
+		if (event.getAction() == Action.LEFT_CLICK_BLOCK)
+			if (Util.isA(event.getClickedBlock().getType(), "Crop")) {
+				event.setCancelled(false);
+				return;
+			}
+		if (event.getAction() != Action.RIGHT_CLICK_BLOCK)
+			return;
+		if (event.getItem() == null)
+			return;
+		if (Util.isA(player.getItemInHand().getType(), "Hoe")) {
+			if (!event.getPlayer().hasPermission("bukkitextras.betterhoes"))
+				return;
+			if (Util.isA(blocktype, "GrowCrop"))
+				BetterHoe.growCrop(block, player);
+			else if (blocktype == Material.SOIL)
+				BetterHoe.plantCrop(block, player);
+		}
+		if (event.isCancelled())
+			return;
 	}
 }
