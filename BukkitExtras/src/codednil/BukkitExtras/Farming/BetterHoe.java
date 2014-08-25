@@ -45,13 +45,14 @@ public class BetterHoe {
 						break;
 					}
 				}
-				if (Compat.playerCanFarm(player, locb.getBlock().getLocation()))
+				if (Compat
+						.playerCanBuild(player, locb.getBlock().getLocation()))
 					locb.getBlock().breakNaturally();
 			} else if (aboveBlock.getType() == Material.SUGAR_CANE_BLOCK) {
-				if (Compat.playerCanFarm(player, aboveBlock.getLocation()))
+				if (Compat.playerCanBuild(player, aboveBlock.getLocation()))
 					aboveBlock.breakNaturally();
 			} else {
-				if (Compat.playerCanFarm(player, cropBlock.getLocation())) {
+				if (Compat.playerCanBuild(player, cropBlock.getLocation())) {
 					if (Util.isA(cropBlock.getType(), "Crop")) {
 						if (cropBlock.getData() == 7) {
 							cropBlock.breakNaturally(handItem);
@@ -70,7 +71,7 @@ public class BetterHoe {
 			Location loc = block.getLocation();
 			Util.addLoc(loc, i);
 			Block cropBlock = loc.getBlock();
-			if (Compat.playerCanFarm(player, cropBlock.getLocation())) {
+			if (Compat.playerCanBuild(player, cropBlock.getLocation())) {
 				if (Util.isA(cropBlock.getType(), "GrowCrop")) {
 					if (cropBlock.getData() != 7) {
 						int bonemealuse = (int) Math.round((7 - cropBlock
@@ -106,7 +107,7 @@ public class BetterHoe {
 			Location loc = block.getLocation();
 			Util.addLoc(loc, i);
 			Block cropBlock = loc.getBlock();
-			if (Compat.playerCanFarm(player, cropBlock.getLocation())) {
+			if (Compat.playerCanBuild(player, cropBlock.getLocation())) {
 				if (cropBlock.getType() == Material.SOIL) {
 					Location above = Util.getAbove(loc);
 					Block aboveBlock = above.getBlock();

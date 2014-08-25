@@ -1,67 +1,82 @@
 name: BukkitExtras
-main: io.github.CodedNil.BukkitExtras
 version: 2.0
-authors: [CodeNil]
-description: Small tweaks and addons for Bukkit
+author: CodeNil
+description: Small tweaks and changes for Bukkit
+
+main: codednil.BukkitExtras.Main.BukkitExtras
 softdepend: [BukkitProtect]
+
+
 permissions:
-    bukkitextras.*:
-        description: Gives access to all BukkitExtras commands
-        children:
-            bukkitextras.animaltags: true
-            bukkitextras.betterhoes: true
-            bukkitextras.specialhorses: true
-            bukkitextras.elevators: true
-            bukkitextras.wands: true
-            bukkitextras.customenchants: true
-            bukkitextras.givewand: true
-            bukkitextras.shops: true
-            bukkitextras.usefulanimals: true
-            bukkitextras.enchantcustom: true
-    bukkitextras.animaltags:
-        description: Allows you to use AnimalTags
-        default: true
-    bukkitextras.betterhoes:
-        description: Allows you to use all the Better Hoe features
-        default: true
-    bukkitextras.specialhorses:
-        description: Allows you to convert your horse into a zombie/skeletal horse
-        default: true
-    bukkitextras.elevators:
-        description: Allows you to use elevators
-        default: true
-    bukkitextras.wands:
-        description: Allows you to use the wand of trading
-        default: true
-    bukkitextras.givewand:
-        description: Allows you to use /givewand command
-        default: op
-    bukkitextras.enchantcustom:
-        description: Allows you to use /enchantcustom command
-        default: op
-    bukkitextras.shops:
-        description: Allows you to use shops
-        default: true
-    bukkitextras.usefulanimals:
-        description: Allows you to get string from shearing sheep
-        default: true
-    bukkitextras.customenchant.*:
-        description: Allows you to get custom enchants on your tools
-        children:
-            bukkitextras.fiery: true
-            bukkitextras.feller: true
-    bukkitextras.customenchant.fiery:
-        description: Allows you to use the fiery enchant
-        default: true
-    bukkitextras.customenchant.feller:
-        description: Allows you to use the feller enchant
-        default: true
+	bukkitextras.*:
+		description: Gives access to all BukkitExtras commands
+		children:
+			bukkitextras.modules.*: true
+			bukkitextras.commands.*: true
+
+	bukkitextras.modules.*:
+		description: Allows access to all modules
+		children:
+			bukkitextras.modules.animaltweaks: true
+			bukkitextras.modules.betterhoe.*: true
+			bukkitextras.modules.shops.*: true
+			bukkitextras.modules.wands.*: true
+
+	bukkitextras.modules.animaltweaks:
+		description: BukkitExtras Module "animaltweaks"
+		default: true
+
+	bukkitextras.modules.betterhoe.*:
+		description: BukkitExtras Module "betterhoe"
+		children:
+			bukkitextras.modules.betterhoe.harvest: true
+			bukkitextras.modules.betterhoe.grow: true
+			bukkitextras.modules.betterhoe.plant: true
+	bukkitextras.modules.betterhoe.harvest:
+		description: BukkitExtras Module "betterhoe" Submodule "harvest"
+		default: true
+	bukkitextras.modules.betterhoe.grow:
+		description: BukkitExtras Module "betterhoe" Submodule "grow"
+		default: true
+	bukkitextras.modules.betterhoe.plant:
+		description: BukkitExtras Module "betterhoe" Submodule "plant"
+		default: true
+
+	bukkitextras.modules.shops.*:
+		description: BukkitExtras Module "shops"
+		children:
+			bukkitextras.modules.shops.use: true
+			bukkitextras.modules.shops.create: true
+			bukkitextras.modules.shops.modifyothers: op
+	bukkitextras.modules.shops.use:
+		description: BukkitExtras Module "shops" Submodule "use"
+		default: true
+	bukkitextras.modules.shops.create:
+		description: BukkitExtras Module "shops" Submodule "create"
+		default: true
+	bukkitextras.modules.shops.modifyothers:
+		description: BukkitExtras Module "shops" Submodule "modifyothers"
+		default: op
+
+	bukkitextras.modules.wands.*:
+		description: BukkitExtras Module "wands"
+		children:
+			bukkitextras.modules.wands.trading: true
+	bukkitextras.modules.wands.trading:
+		description: BukkitExtras Module "wands" Submodule "trading"
+		default: true
+
+	bukkitextras.commands.*:
+		description: Allows access to all commands
+		children:
+			bukkitextras.commands.givewand: true
+
+	bukkitextras.commands.givewand:
+		description: BukkitExtras Command "givewand"
+		default: op
+
 commands:
-   givewand:
-      description: Give specified wand to player.
-      usage: /<command> wand
-      permission: bukkitextras.givewand
-   enchantcustom:
-      description: Gives item in hand custom enchantment with level.
-      usage: /<command> enchant level
-      permission: bukkitextras.enchantcustom
+	givewand:
+		description: Give specified wand to player.
+		usage: /<command> wand
+		permission: bukkitextras.commands.givewand
