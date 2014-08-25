@@ -1,11 +1,8 @@
-package events;
+package main;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
-import main.BukkitExtras;
-import main.Util;
 
 import org.bukkit.Effect;
 import org.bukkit.GameMode;
@@ -24,6 +21,9 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Pig;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Sheep;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
@@ -39,9 +39,11 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.util.Vector;
 
 import wands.WandHandler;
+import farming.BetterHoe;
 
-public class EventHandler {
-	public static void CreatureSpawn(CreatureSpawnEvent event) {
+public class Events implements Listener {
+	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+	public void CreatureSpawn(CreatureSpawnEvent event) {
 		LivingEntity creature = event.getEntity();
 		if (event.getSpawnReason() == SpawnReason.BREEDING)
 			if (creature.getType() == EntityType.PIG)
@@ -53,7 +55,8 @@ public class EventHandler {
 				}
 	}
 
-	public static void ShearEntity(PlayerShearEntityEvent event) {
+	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+	public void ShearEntity(PlayerShearEntityEvent event) {
 		if (!event.getPlayer().hasPermission("bukkitextras.usefulanimals"))
 			return;
 		Entity entity = event.getEntity();
@@ -63,7 +66,8 @@ public class EventHandler {
 						new ItemStack(Material.STRING));
 	}
 
-	public static void BlockBreak(BlockBreakEvent event) {
+	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+	public void BlockBreak(BlockBreakEvent event) {
 		Block block = event.getBlock();
 		Player player = event.getPlayer();
 		Material blocktype = block.getType();
@@ -89,7 +93,8 @@ public class EventHandler {
 		}
 	}
 
-	public static void BlockPlace(BlockPlaceEvent event) {
+	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+	public void BlockPlace(BlockPlaceEvent event) {
 		Block block = event.getBlock();
 		Material blocktype = block.getType();
 		ItemStack item = event.getItemInHand();
@@ -103,7 +108,8 @@ public class EventHandler {
 		}
 	}
 
-	public static void PlayerSneak(PlayerToggleSneakEvent event) {
+	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+	public void PlayerSneak(PlayerToggleSneakEvent event) {
 		Player player = event.getPlayer();
 		if (event.isSneaking()) {
 			if (!event.getPlayer().hasPermission("bukkitextras.elevators"))
@@ -138,7 +144,8 @@ public class EventHandler {
 		}
 	}
 
-	public static void PlayerMove(PlayerMoveEvent event) {
+	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+	public void PlayerMove(PlayerMoveEvent event) {
 		Player player = event.getPlayer();
 		Location movement = event.getTo().clone().subtract(event.getFrom());
 		if (movement.getY() > 0.4) {
@@ -174,7 +181,9 @@ public class EventHandler {
 		}
 	}
 
-	public static void PlayerInteract(PlayerInteractEvent event) {
+	@SuppressWarnings("deprecation")
+	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+	public void PlayerInteract(PlayerInteractEvent event) {
 		Block block = event.getClickedBlock();
 		Player player = event.getPlayer();
 		ItemStack item = event.getItem();
@@ -246,7 +255,7 @@ public class EventHandler {
 		}
 	}
 
-	public static boolean onCommand(CommandSender sender, Command cmd,
+	public boolean onCommand(CommandSender sender, Command cmd, String label,
 			String[] args) {
 		if (cmd.getName().equalsIgnoreCase("givewand")) {
 			if (sender instanceof Player) {
