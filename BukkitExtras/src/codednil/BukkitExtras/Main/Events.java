@@ -1,4 +1,4 @@
-package main;
+package codednil.BukkitExtras.Main;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -38,8 +38,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.util.Vector;
 
-import wands.WandHandler;
-import farming.BetterHoe;
+import codednil.BukkitExtras.Farming.BetterHoe;
+import codednil.BukkitExtras.Wands.WandHandler;
 
 public class Events implements Listener {
 	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)

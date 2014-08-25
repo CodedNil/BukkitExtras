@@ -1,12 +1,9 @@
-package shops;
+package codednil.BukkitExtras.Shops;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import main.BukkitExtras;
-import main.Util;
 
 import org.apache.commons.lang.WordUtils;
 import org.bukkit.Location;
@@ -23,6 +20,9 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import codednil.BukkitExtras.Main.BukkitExtras;
+import codednil.BukkitExtras.Main.Util;
 
 public class ShopHandler {
 	static Map<Player, Block> shopsOpen = new HashMap<Player, Block>();

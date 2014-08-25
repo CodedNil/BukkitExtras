@@ -1,4 +1,4 @@
-package main;
+package codednil.BukkitExtras.Main;
 
 import java.util.ArrayList;
 import java.util.Arrays;

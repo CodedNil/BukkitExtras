@@ -1,8 +1,4 @@
-package farming;
-
-import main.BukkitExtras;
-import main.Compat;
-import main.Util;
+package codednil.BukkitExtras.Farming;
 
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -12,6 +8,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
+
+import codednil.BukkitExtras.Main.BukkitExtras;
+import codednil.BukkitExtras.Main.Compat;
+import codednil.BukkitExtras.Main.Util;
 
 @SuppressWarnings("deprecation")
 public class BetterHoe {

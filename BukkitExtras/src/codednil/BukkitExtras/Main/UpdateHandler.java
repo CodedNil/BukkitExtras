@@ -1,4 +1,4 @@
-package main;
+package codednil.BukkitExtras.Main;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

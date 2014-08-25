@@ -1,4 +1,4 @@
-package main;
+package codednil.BukkitExtras.Main;
 
 import org.bukkit.Material;
 import org.bukkit.event.Listener;
@@ -10,7 +10,7 @@ import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import wands.WandHandler;
+import codednil.BukkitExtras.Wands.WandHandler;
 
 public class BukkitExtras extends JavaPlugin implements Listener {
 	public static BukkitExtras Plugin;

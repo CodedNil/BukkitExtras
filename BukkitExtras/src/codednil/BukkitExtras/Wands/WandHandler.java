@@ -1,15 +1,15 @@
-package wands;
+package codednil.BukkitExtras.Wands;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import main.BukkitExtras;
 
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import codednil.BukkitExtras.Main.BukkitExtras;
 
 public class WandHandler {
 	public static List<ItemStack> wands = new ArrayList<ItemStack>();

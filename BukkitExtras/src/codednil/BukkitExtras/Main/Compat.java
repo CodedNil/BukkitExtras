@@ -1,4 +1,4 @@
-package main;
+package codednil.BukkitExtras.Main;
 
 import io.github.elitejynx.BukkitProtect.BukkitProtect;
 import io.github.elitejynx.BukkitProtect.ProtectionZone;

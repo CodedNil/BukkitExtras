@@ -1,7 +1,7 @@
 name: BukkitExtras
 main: io.github.CodedNil.BukkitExtras
-version: D1.6
-authors: [CodeNil, EliteJynx]
+version: 2.0
+authors: [CodeNil]
 description: Small tweaks and addons for Bukkit
 softdepend: [BukkitProtect]
 permissions:
